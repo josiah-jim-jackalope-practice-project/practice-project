@@ -1,32 +1,4 @@
 "use strict";
-
-alert('Welcome to our Cheese App!');
-let userInput;
-do {
-    userInput = prompt('Do you want to search by cheese name or by country of origin?');
-    if(userInput === 'country' || userInput === 'name') {
-        userInput = prompt('Please enter your search keyword');
-
-        break;
-
-    } else {
-        alert('Invalid input');
-    }
-} while (true);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const cheeses = [
     {
         "name": "Cheddar",
@@ -254,3 +226,44 @@ const cheeses = [
         "country_of_origin": "Ireland"
     }
 ];
+
+alert('Welcome to our Cheese App!');
+ let userInput= prompt('Do you want to search by cheese name or by country of origin? Enter "name" or "country".');
+    if(userInput !== 'country' && userInput !== 'name') {
+        //Alert user to halt execution if input is invalid
+        alert('Invalid input');
+
+    } else {
+        userInput = prompt('Please enter your search keyword');
+// Filter the cheeses based on the search method and string
+        let filteredCheeses = cheeses.filter(cheese => {
+            if (userInput === 'name') {
+                return cheese.name.toLowerCase().startsWith(userInput);
+            } else {
+                return cheese.country_of_origin.toLowerCase().startsWith(userInput);
+            }
+        });
+
+        // Display the results
+        if (filteredCheeses.length > 0) {
+            let message = "Found cheeses:\n" + filteredCheeses.map(cheese => `${cheese.name} from ${cheese.country_of_origin}`).join('\n');
+            alert(message);
+        } else {
+            alert("No cheeses found that match your criteria.");
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
