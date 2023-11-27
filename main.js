@@ -228,19 +228,19 @@ const cheeses = [
 ];
 
 alert('Welcome to our Cheese App!');
- let userInput= prompt('Do you want to search by cheese name or by country of origin? Enter "name" or "country".');
-    if(userInput !== 'country' && userInput !== 'name') {
+ let searchMethod= prompt('Do you want to search by cheese name or by country of origin? Enter "name" or "country".');
+    if(searchMethod !== 'country' && searchMethod !== 'name') {
         //Alert user to halt execution if input is invalid
         alert('Invalid input');
 
     } else {
-        userInput = prompt('Please enter your search keyword');
+        let searchKeyword= prompt('Please enter your search keyword').toLowerCase();
 // Filter the cheeses based on the search method and string
         let filteredCheeses = cheeses.filter(cheese => {
-            if (userInput === 'name') {
-                return cheese.name.toLowerCase().startsWith(userInput);
+            if (searchMethod === 'name') {
+                return cheese.name.toLowerCase().startsWith(searchKeyword);
             } else {
-                return cheese.country_of_origin.toLowerCase().startsWith(userInput);
+                return cheese.country_of_origin.toLowerCase().startsWith(searchKeyword);
             }
         });
 
